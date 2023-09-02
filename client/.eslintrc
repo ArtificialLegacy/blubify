@@ -1,0 +1,27 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "react-hooks"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/ban-ts-comment": [
+      "warn",
+      { "ts-ignore": "allow-with-description" }
+    ],
+    "no-console": "warn",
+    "eqeqeq": ["error", "smart"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
