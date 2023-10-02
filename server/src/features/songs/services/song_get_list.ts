@@ -40,7 +40,7 @@ async function songGetList(_playlistId: string): Promise<Song[]> {
       ordering: songEntries[_index].ordering,
       filepath: _value.filepath,
       ready: Boolean(_value.ready.at(0)),
-      failed: Boolean(_value.failed.at(0)),
+      failed: Boolean(_value.failed?.at(0)) ?? false,
       entryId: songEntries[_index].entry_id,
       createdAt: songEntries[_index].created_at,
       shareKey: songEntries[_index].share_key,
