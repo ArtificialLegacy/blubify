@@ -1,3 +1,8 @@
+/**
+ * Converts a file to an ArrayBuffer
+ * @param _file - The file to convert
+ * @returns The file as an ArrayBuffer
+ */
 async function readFile(_file: File): Promise<ArrayBuffer> {
   return new Promise<ArrayBuffer>((_resolve, _reject) => {
     const reader = new FileReader()
