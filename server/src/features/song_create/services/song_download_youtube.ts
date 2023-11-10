@@ -18,7 +18,7 @@ async function songDownloadYoutube(_url: string, _filepath: string) {
     extractAudio: true,
     audioQuality: 0,
     output: `public/songs/${_filepath}.m4a`,
-    ffmpegLocation: process.env.FFMPEG_LOCATION,
+    ffmpegLocation: process.env.FFMPEG_LOCATION ?? undefined,
     format: 'm4a',
     writeInfoJson: true,
     printJson: true,

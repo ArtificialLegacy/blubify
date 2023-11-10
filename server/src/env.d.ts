@@ -8,8 +8,8 @@ namespace NodeJS {
     DATABASE_USER: string
     DATABASE_PASSWORD: string
     DATABASE: string
-    FFMPEG_PATH: string
-    FFMPEG_LOCATION: string
+    FFMPEG_PATH: string | undefined
+    FFMPEG_LOCATION: string | undefined
     API_IP: string
     API_PORT: string
   }
