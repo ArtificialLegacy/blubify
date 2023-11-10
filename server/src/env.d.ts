@@ -10,5 +10,7 @@ namespace NodeJS {
     DATABASE: string
     FFMPEG_PATH: string
     FFMPEG_LOCATION: string
+    API_IP: string
+    API_PORT: string
   }
 }

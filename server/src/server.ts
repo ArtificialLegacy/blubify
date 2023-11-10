@@ -35,7 +35,7 @@ app.get('/api/status', (_req, _res) => {
   _res.sendStatus(200)
 })
 
-app.listen(5000, () => {
+app.listen(parseInt(process.env.API_PORT), process.env.API_IP, () => {
   console.log('Server listening on port 5000!')
 })
 
