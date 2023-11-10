@@ -1,3 +1,7 @@
+/* 
+  On step: 11.
+*/
+
 create table Users (
   user_id tinyint primary key not null auto_increment,
   username varchar(32) unique not null,
@@ -40,7 +44,7 @@ create table Songs (
   source enum('youtube', 'upload'),
   youtube_id varchar(32) unique,
   ready bit,
-  failed bit,
+  failed bit default 0,
   created_at timestamp default now(),
 
   unique index ifilepath (filepath)
