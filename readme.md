@@ -48,8 +48,8 @@ cd ./server
 
 ```sh
 # optional if FFMPEG is installed on PATH
-FFMPEG_PATH=""
-FFMPEG_LOCATION=""
+FFMPEG_PATH="" # Path to the exe file.
+FFMPEG_LOCATION="" # Path to bin directory.
 
 DATABASE_URL="" # The full url to connect to the api with, this is used to generate db types.
 DATABASE_HOST="" # Host ip for the db.
