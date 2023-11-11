@@ -6,7 +6,7 @@
 * serve
 * FFMPEG
 * Python 3.7 or greater installed on system.
-* A mysql/mariadb database. (some scripts may not work properly outside of)
+* A mysql/mariadb database. (some scripts may not work properly outside of MariaDB)
 * screen (optional)
 
 ## Installation
