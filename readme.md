@@ -42,11 +42,6 @@ SHOW tables;
 cd ./server
 ```
 
-* Install packages and generate db types.
-
-```sh
-npm i
-npm run migrate-db
 ```
 
 * Create .env in the server directory with the following:
@@ -66,6 +61,12 @@ DATABASE="" # Name of the database.
 API_IP="" # The ip to host the ip on, either 127.0.0.1 for hosting locally or you're ip on you're local network.
 API_PORT="" # The port to host the api on.
 ```
+
+* Install packages and generate db types.
+
+```sh
+npm i
+npm run migrate-db
 
 * Running the server is blocking so it must be run within it's own screen/terminal
 
