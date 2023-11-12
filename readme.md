@@ -42,8 +42,6 @@ SHOW tables;
 cd ./server
 ```
 
-```
-
 * Create .env in the server directory with the following:
 
 ```sh
