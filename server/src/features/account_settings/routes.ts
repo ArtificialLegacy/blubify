@@ -4,7 +4,15 @@ import { sessionGetUser, authUserCheck } from 'features/authentication'
 import GenericResult from 'types/generic_result'
 import updateUserSettings from './services/update_user_settings'
 
+/**
+ * @middleware authUserCheck
+ *
+ * @endpoint '/edit' - Endpoint used for updating user settings.
+ *
+ * @packageDocumentation
+ */
 const router = Router()
+
 router.use(authUserCheck)
 
 router.put('/edit', async (_req, _res) => {

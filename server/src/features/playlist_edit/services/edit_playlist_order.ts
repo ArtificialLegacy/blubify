@@ -1,5 +1,12 @@
 import { playlistGet } from 'features/playlist'
 
+/**
+ * Updates the ordering of a playlist in the database.
+ * Will reorganize the ordering of all playlists own by the user based on the new position of the playlist.
+ * @param _playlistId
+ * @param _newOrder
+ * @returns
+ */
 async function editPlaylistOrder(_playlistId: string, _newOrder: number) {
   const playlist = await playlistGet(_playlistId)
 
