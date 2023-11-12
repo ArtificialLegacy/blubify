@@ -66,6 +66,8 @@ API_PORT="" # The port to host the api on.
 npm i
 npm run migrate-db
 
+```
+
 * Running the server is blocking so it must be run within it's own screen/terminal
 
 ```sh
