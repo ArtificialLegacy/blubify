@@ -8,6 +8,16 @@ import validateSongNameEdit from './validators/validate_song_edit_name'
 import editSongOrder from './services/edit_song_order'
 import deleteSong from './services/delete_song'
 
+/**
+ * @middleware authUserCheck
+ *
+ * @endpoint '/name/:entryId' - Used to edit the name of a song entry.
+ * @endpoint '/order/up/:entryId' - Used to move a song entry up in the playlist.
+ * @endpoint '/order/down/:entryId' - Used to move a song entry down in the playlist.
+ * @endpoint '/delete/:entryId' - Used to delete a song entry.
+ *
+ * @packageDocumentation
+ */
 const router = Router()
 router.use(authUserCheck)
 

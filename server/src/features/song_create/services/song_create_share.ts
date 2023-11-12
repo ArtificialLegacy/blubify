@@ -1,5 +1,10 @@
 import type { ShareImportData } from '../types/share_import_data'
 
+/**
+ * Create a song entry from a share key.
+ * @param _data - The share key and the playlist id.
+ * @returns True if the song entry was created.
+ */
 async function songCreateShare(_data: ShareImportData): Promise<boolean> {
   const songEntry = await globalThis.db
     .selectFrom('songentries')

@@ -1,3 +1,8 @@
+/**
+ * Get the user id of the user who created the song entry from the database.
+ * @param _entryId - The id of the song entry.
+ * @returns The user id of the user who created the song entry.
+ */
 async function songEntryGetUser(_entryId: number): Promise<number> {
   const user = await globalThis.db
     .selectFrom('songentries')
