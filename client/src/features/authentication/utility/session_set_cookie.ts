@@ -14,7 +14,7 @@ function sessionSetCookie(_sessionid: string) {
   // the large number is for ms in a day
   expire.setTime(today.getTime() + 86400000 * 7)
 
-  document.cookie = `session=${_sessionid}; expires=${expire.toUTCString()}; secure; SameSite=Strict`
+  document.cookie = `session=${_sessionid}; expires=${expire.toUTCString()}`
 }
 
 export default sessionSetCookie

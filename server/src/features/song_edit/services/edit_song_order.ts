@@ -1,3 +1,8 @@
+/**
+ * Edit the order of a song in a playlist, and shift the other songs accordingly.
+ * @param _entryId - The id of the song entry to edit.
+ * @param _newOrder - The new order of the song entry.
+ */
 async function editSongOrder(_entryId: number, _newOrder: number) {
   const entry = await globalThis.db
     .selectFrom('songentries')

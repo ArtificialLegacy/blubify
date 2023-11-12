@@ -1,3 +1,7 @@
+/**
+ * Deletes a playlist from the database.
+ * @param _playlistId - The ID of the playlist to delete.
+ */
 async function deletePlaylist(_playlistId: string) {
   globalThis.db
     .deleteFrom('playlists')

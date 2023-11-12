@@ -4,6 +4,14 @@ import { sessionGetUser } from 'features/authentication'
 import GenericResult from 'types/generic_result'
 import playlistGet from '../services/playlist_get'
 
+/**
+ * Middleware that checks if the user owns a playlist.
+ * Checks for the playlist ID in the request body.
+ * @param _req
+ * @param _res
+ * @param _next
+ * @returns
+ */
 async function userOwnsPlaylist(
   _req: Request,
   _res: Response,

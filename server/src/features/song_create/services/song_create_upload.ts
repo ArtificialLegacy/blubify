@@ -1,8 +1,12 @@
 import { v4 as uuidv4 } from 'uuid'
-import { promises as fs } from 'fs'
 import type formidable from 'formidable'
 import songProcessUpload from './song_process_upload'
 
+/**
+ * Create a song entry from an uploaded file.
+ * @param _fields - The html form fields.
+ * @param _files - The html form files.
+ */
 async function songCreateUpload(
   _fields: formidable.Fields<string>,
   _files: formidable.Files<string>

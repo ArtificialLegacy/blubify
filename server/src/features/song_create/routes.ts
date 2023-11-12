@@ -12,6 +12,9 @@ import songCreateUpload from './services/song_create_upload'
 import formidableParse from 'middleware/formidable_parse'
 
 /**
+ * @middleware authUserCheck
+ * @middlewware userOwnsPlaylist
+ *
  * @endpoint '/youtube' - Used to submit a youtube song import.
  * @endpoint '/upload' - Used to submit an audio file.
  * @endpoint '/shared' - Used to add an already existing song from a different playlist to another playlist.

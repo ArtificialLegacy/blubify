@@ -1,5 +1,10 @@
 import ffmpeg from 'fluent-ffmpeg'
 
+/**
+ * Process the uploaded song file to normalize for storage.
+ * @param _tempFilepath - The temporary filepath of the uploaded file.
+ * @param _filepath - The filepath to store the song at.
+ */
 async function songProcessUpload(_tempFilepath: string, _filepath: string) {
   ffmpeg()
     .input(_tempFilepath)

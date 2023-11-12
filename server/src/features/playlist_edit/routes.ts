@@ -8,6 +8,16 @@ import validatePlaylistEdit from './validators/validate_edit_playlist'
 import editPlaylistName from './services/edit_playlist_name'
 import deletePlaylist from './services/delete_playlist'
 
+/**
+ * @middleware authUserCheck
+ *
+ * @endpoint '/data/:playlistId' - This endpoint is used to submit playlist edit data.
+ * @endpoint '/delete/:playlistId' - This endpoint is used to delete a playlist.
+ * @endpoint '/order/up/:playlistId' - This endpoint is used to move a playlist up in the list.
+ * @endpoint '/order/down/:playlistId' - This endpoint is used to move a playlist down in the list.
+ *
+ * @packageDocumentation
+ */
 const router = Router()
 router.use(authUserCheck)
 

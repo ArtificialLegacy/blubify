@@ -1,6 +1,12 @@
 import type { Request, Response, NextFunction } from 'express'
 import formidable from 'formidable'
 
+/**
+ * Parses the request body and files using formidable.
+ * @param _req
+ * @param _res
+ * @param _next
+ */
 function formidableParse(_req: Request, _res: Response, _next: NextFunction) {
   const form = formidable({})
 
