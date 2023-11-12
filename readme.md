@@ -70,7 +70,7 @@ npm run migrate-db
 
 ```sh
 # OPTIONAL: create a screen
-screen -s BlubifyServer
+screen -S BlubifyServer
 
 # run server
 npm start
@@ -106,7 +106,7 @@ npm run build
 
 ```sh
 # OPTIONAL: create a screen
-screen -s BlubifyClient
+screen -S BlubifyClient
 
 # run client
 npm run host
