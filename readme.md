@@ -140,7 +140,7 @@ cd ./server
 * Install packages and generate db types.
 
 ```sh
-npm i
+npm i --force
 npm run migrate-db
 ```
 
@@ -169,5 +169,7 @@ npm run build
 * Occasionally as the `youtube-dl-exec` package gets out of date it will be unable to download songs imported from youtube, to fix this you can try to update the package.
 
 ```sh
-npm update youtube-dl-exec
+npm update youtube-dl-exec --force
 ```
+
+* Currently the --force flag is necessary what updating or installing packages within the server directory, as 2 different packages depend on different versions of mysql2. There is no compatibility issue but npm will throw errors because of this.
