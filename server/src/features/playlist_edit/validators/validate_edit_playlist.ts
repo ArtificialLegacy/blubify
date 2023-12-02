@@ -12,7 +12,7 @@ const playlistEditValidationSchema = yup.object({
 async function validatePlaylistEdit(_data: PlaylistEditData): Promise<boolean> {
   return await playlistEditValidationSchema
     .isValid(_data)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 }
 
