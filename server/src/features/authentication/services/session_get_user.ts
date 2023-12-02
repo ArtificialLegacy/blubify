@@ -7,7 +7,7 @@
  *
  * const userID: number = await sessionGetUser('sessionid')
  */
-async function sessionGetUser(_sessionID: string): Promise<number> {
+async function sessionGetUser(_sessionID: string): Promise<number | null> {
   const user = await globalThis.db
     .selectFrom('browsersessions')
     .select('user_id')
