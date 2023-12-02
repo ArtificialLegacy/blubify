@@ -14,9 +14,7 @@ const SALT_ROUNDS = 15
  * hashPassword('password').then(password: String => {})
  */
 async function hashPassword(_password: string): Promise<string> {
-  return await bcrypt
-    .hash(_password, SALT_ROUNDS)
-    .then((_hash: string) => _hash)
+  return await bcrypt.hash(_password, SALT_ROUNDS).then((_hash) => _hash)
 }
 
 export default hashPassword
