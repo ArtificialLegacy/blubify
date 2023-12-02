@@ -19,7 +19,7 @@ async function validateShareImport(_data: {
 }): Promise<boolean> {
   return await shareImportValidationSchema
     .isValid(_data)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 }
 

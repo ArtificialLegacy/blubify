@@ -19,12 +19,12 @@ async function validateUploadImport(
 ): Promise<boolean> {
   const fieldsValid = await uploadFieldsImportValidationSchema
     .isValid(_fields)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 
   const filesValid = await uploadFilesImportValidationSchema
     .isValid(_files)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 
   return fieldsValid && filesValid

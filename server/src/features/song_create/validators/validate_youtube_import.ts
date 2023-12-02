@@ -16,7 +16,7 @@ async function validateYoutubeImport(
 ): Promise<boolean> {
   return await youtubeImportValidationSchema
     .isValid(_data)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 }
 
