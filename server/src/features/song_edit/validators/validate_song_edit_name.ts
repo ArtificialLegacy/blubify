@@ -16,7 +16,7 @@ const songEditValidationSchema = yup.object({
 async function validateSongNameEdit(_data: EditSongNameData) {
   return await songEditValidationSchema
     .isValid(_data)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 }
 
