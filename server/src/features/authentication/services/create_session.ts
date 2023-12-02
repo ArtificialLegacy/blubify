@@ -14,7 +14,7 @@ async function createSession(
   _userId: number,
   _ip: string,
   _agent: { platform: string; browser: string }
-): Promise<string> {
+): Promise<string | undefined> {
   await globalThis.db
     .insertInto('browsersessions')
     .values({
