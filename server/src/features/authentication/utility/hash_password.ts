@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt'
 
-const SALT_ROUNDS = 15
+const SALT_ROUNDS = 13
 
 /**
  * Uses bcrypt to hash a plain text password.
