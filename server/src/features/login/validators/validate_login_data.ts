@@ -24,7 +24,7 @@ const loginDataValidationSchema = yup.object({
 async function validateLoginData(_data: LoginData): Promise<boolean> {
   return await loginDataValidationSchema
     .isValid(_data)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 }
 
