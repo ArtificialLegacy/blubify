@@ -35,9 +35,15 @@ app.get('/api/status', (_req, _res) => {
   _res.sendStatus(200)
 })
 
-app.listen(parseInt(process.env.API_PORT), process.env.API_IP, () => {
-  console.log('Server listening on port 5000!')
-})
+app.listen(
+  parseInt(process.env.API_PORT ?? ''),
+  process.env.API_IP ?? '',
+  () => {
+    console.log(
+      `Server listening at ${process.env.API_IP} on port ${process.env.API_PORT}!`
+    )
+  }
+)
 
 const db = new Kysely<Database>({
   dialect: new MysqlDialect({
