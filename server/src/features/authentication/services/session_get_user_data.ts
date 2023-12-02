@@ -15,7 +15,7 @@ async function sessionGetUserData(_sessionID: string): Promise<UserData> {
     .where('user_id', '=', user)
     .executeTakeFirst()
 
-  return userData
+  return userData as UserData
 }
 
 export default sessionGetUserData
