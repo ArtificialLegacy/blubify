@@ -31,6 +31,13 @@ router.get('/session', async (_req, _res) => {
 
 router.get('/sessionList', async (_req, _res) => {
   const user = await sessionGetUser(_res.locals.cookies?.session)
+
+  if (user === undefined || user === null) {
+    _res.status(403)
+    _res.send({ status: GenericResult.Failed })
+    return
+  }
+
   const sessions = await sessionGetList(user)
 
   _res.status(200)
