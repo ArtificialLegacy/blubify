@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "NodeNext",
+    "strict": true,
+    "target": "ES2022",
+    "module": "CommonJS",
     "rootDirs": ["./src"],
     "typeRoots": ["./src/env.d.ts", "./src/reset.d.ts", "./node_modules/@types"],
     "baseUrl": "./src",
@@ -18,5 +19,11 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "incremental": false,
+    "resolveJsonModule": true,
+    "types": ["jest", "node"]
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }
