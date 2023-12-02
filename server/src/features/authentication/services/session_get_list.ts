@@ -16,7 +16,13 @@ async function sessionGetList(_user: number): Promise<Session[]> {
     ])
     .execute()
 
-  return sessions
+  sessions.forEach((session) => {
+    if (session.ip === null) {
+      session.ip = ''
+    }
+  })
+
+  return sessions as Session[]
 }
 
 export default sessionGetList
