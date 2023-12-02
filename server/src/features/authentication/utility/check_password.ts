@@ -16,7 +16,7 @@ async function checkPassword(
   _password: string,
   _hash: string
 ): Promise<boolean> {
-  return await bcrypt.compare(_password, _hash).then((_hash) => _hash)
+  return await bcrypt.compare(_password, _hash).then((_hash: string) => _hash)
 }
 
 export default checkPassword
