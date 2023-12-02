@@ -20,7 +20,7 @@ const playlistCreateDataValidationSchema = yup.object({
 async function validatePlaylistCreateData(_data: PlaylistCreateData) {
   return await playlistCreateDataValidationSchema
     .isValid(_data)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 }
 
