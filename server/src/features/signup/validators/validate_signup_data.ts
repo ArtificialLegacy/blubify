@@ -37,7 +37,7 @@ const signupDataValidationSchema = yup
 async function validateSignupData(_data: SignupData): Promise<boolean> {
   return await signupDataValidationSchema
     .isValid(_data)
-    .then(() => true)
+    .then((_value) => _value)
     .catch(() => false)
 }
 
