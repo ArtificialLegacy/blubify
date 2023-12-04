@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+			{
+			"name": "client",
+			"path": "../client"
+		},
+		{
+			"name": "server",
+			"path": "../server"
+		}
+	],
+	"settings": {
+		"explorer.compactFolders": false,
+		"jest.disabledWorkspaceFolders": [
+			"blubify"
+		]
+	}
+}
