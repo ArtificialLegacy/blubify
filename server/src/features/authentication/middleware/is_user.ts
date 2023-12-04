@@ -2,6 +2,8 @@ import type { Request, Response, NextFunction } from 'express'
 
 import SessionStatus from '../types/session_status'
 import checkSession from '../services/check_session'
+import sessionGetUser from '../services/session_get_user'
+import GenericResult from 'types/generic_result'
 
 /**
  * Auth middleware for checking sessionid for a valid user.
@@ -21,8 +23,20 @@ async function authUserCheck(
   _next: NextFunction
 ) {
   const exists = await checkSession(_res.locals.cookies?.session)
-  if (exists === SessionStatus.Valid) _next()
-  else _res.sendStatus(403)
+  if (exists !== SessionStatus.Valid) {
+    _res.status(403)
+    _res.send({ status: GenericResult.Failed })
+    return
+  }
+
+  const user = await sessionGetUser(_res.locals.cookies?.session)
+  if (user === undefined || user === null) {
+    _res.status(403)
+    _res.send({ status: GenericResult.Failed })
+    return
+  }
+
+  _next()
 }
 
 export default authUserCheck
