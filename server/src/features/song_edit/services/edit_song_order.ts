@@ -4,12 +4,12 @@
  * @param _newOrder - The new order of the song entry.
  */
 async function editSongOrder(_entryId: number, _newOrder: number) {
-  const entry = await globalThis.db
+  const entry = (await globalThis.db
     .selectFrom('songentries')
     .select('playlist_id')
     .select('ordering')
     .where('entry_id', '=', _entryId)
-    .executeTakeFirst()
+    .executeTakeFirst()) as { playlist_id: string; ordering: number } // Song entry will have been validated by the time this is called
 
   if (entry.ordering === _newOrder) return
 

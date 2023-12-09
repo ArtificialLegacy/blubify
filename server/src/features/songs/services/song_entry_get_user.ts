@@ -3,7 +3,7 @@
  * @param _entryId - The id of the song entry.
  * @returns The user id of the user who created the song entry.
  */
-async function songEntryGetUser(_entryId: number): Promise<number> {
+async function songEntryGetUser(_entryId: number): Promise<number | undefined> {
   const user = await globalThis.db
     .selectFrom('songentries')
     .where('entry_id', '=', _entryId)
@@ -11,7 +11,7 @@ async function songEntryGetUser(_entryId: number): Promise<number> {
     .select('user_id')
     .executeTakeFirst()
 
-  return user.user_id
+  return user?.user_id
 }
 
 export default songEntryGetUser

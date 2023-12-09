@@ -4,11 +4,11 @@
  * @returns 1 if the entry was deleted, 0 otherwise
  */
 async function deleteSong(_entryId: number): Promise<number> {
-  const entry = await globalThis.db
+  const entry = (await globalThis.db
     .selectFrom('songentries')
     .select('ordering')
     .where('entry_id', '=', _entryId)
-    .executeTakeFirst()
+    .executeTakeFirst()) as { ordering: number } // Song entry will have been validated by the time this is called
 
   globalThis.db
     .updateTable('songentries')
