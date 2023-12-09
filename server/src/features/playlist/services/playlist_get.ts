@@ -12,7 +12,7 @@ import { Selectable } from 'kysely'
  */
 async function playlistGet(
   _playlistID: string
-): Promise<Selectable<Playlists>> {
+): Promise<Selectable<Playlists> | undefined> {
   return await globalThis.db
     .selectFrom('playlists')
     .selectAll()
