@@ -17,7 +17,11 @@ import validateLoginData from '../validators/validate_login_data'
  */
 async function login(_req: Request, _res: Response) {
   const validData = await validateLoginData(_req.body)
-  if (!validData) return { status: LoginStatus.InvalidRequest }
+  if (!validData) {
+    _res.status(400)
+    _res.send({ status: LoginStatus.InvalidRequest })
+    return
+  }
 
   const user = await usernameGetUser(_req.body.username)
   if (user === undefined) {
