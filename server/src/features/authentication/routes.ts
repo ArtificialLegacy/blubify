@@ -1,6 +1,7 @@
 import { Router } from 'express'
 
 import { router as signupRouter } from 'features/signup'
+import { router as loginRouter } from 'features/login'
 import authUserCheck from './middleware/is_user'
 
 import session from './routes/session'
@@ -27,5 +28,6 @@ router.delete('/logout', authUserCheck, logout)
 router.delete('/sessionInvalidate/:sessionId', authUserCheck, sessionInvalidate)
 
 router.use(signupRouter)
+router.use(loginRouter)
 
 export default router
