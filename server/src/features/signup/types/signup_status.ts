@@ -11,6 +11,7 @@ enum SignupStatus {
   FailedDBStore = 'S101',
   InvalidRequest = 'S200',
   InvalidEmail = 'S201',
+  UsernameTaken = 'S202',
 }
 
 export default SignupStatus
