@@ -15,7 +15,7 @@ async function songCreateUpload(
     .selectFrom('songentries')
     .select(({ fn }) => [fn.count<number>('song_id').as('count')])
     .groupBy('playlist_id')
-    .where('playlist_id', '=', _fields.playlistid)
+    .where('playlist_id', '=', _fields.playlistid as unknown as string)
     .execute()
 
   const count = countR.length === 0 ? 0 : countR[0].count
@@ -30,20 +30,24 @@ async function songCreateUpload(
     })
     .execute()
 
-  const song = await globalThis.db
+  const song = (await globalThis.db
     .selectFrom('songs')
     .select('song_id')
     .where('filepath', '=', filepath)
-    .executeTakeFirst()
+    .executeTakeFirst()) as { song_id: number }
 
+  // formiddle values are ignored as they are missing proper typings
+  // @ts-ignore
   songProcessUpload(_files.file[0].filepath, filepath)
 
   await globalThis.db
     .insertInto('songentries')
     .values({
+      // @ts-ignore
       playlist_id: _fields.playlist[0],
       song_id: song.song_id,
       ordering: count,
+      // @ts-ignore
       song_name: _fields.name[0],
     })
     .execute()

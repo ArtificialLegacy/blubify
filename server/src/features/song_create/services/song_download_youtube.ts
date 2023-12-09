@@ -52,7 +52,7 @@ async function songDownloadYoutube(_url: string, _filepath: string) {
               .select('song_id')
               .where('filepath', '=', _filepath)
               .executeTakeFirst()
-          )?.song_id
+          )?.song_id as number // the song is guaranteed to exist because it will always be created before this function was called
         )
         .where('song_name', '=', '')
         .execute()

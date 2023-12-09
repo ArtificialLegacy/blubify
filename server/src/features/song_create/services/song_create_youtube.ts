@@ -13,9 +13,9 @@ import songDownloadYoutube from './song_download_youtube'
  * await songCreateYoutube(YoutubeImportData)
  */
 async function songCreateYoutube(_data: YoutubeImportData) {
-  const ytid = _data.url.match(/([a-z0-9_-]{11})/gim)[0]
+  const ytid = _data.url.match(/([a-z0-9_-]{11})/gim)?.[0] as string // user data has already been validated
 
-  const exists: { song_id: number } | null = await globalThis.db
+  const exists: { song_id: number } | null | undefined = await globalThis.db
     .selectFrom('songs')
     .select('song_id')
     .where('source', '=', 'youtube')
@@ -34,7 +34,7 @@ async function songCreateYoutube(_data: YoutubeImportData) {
   let songId = exists?.song_id ?? -1
   const filepath: string = uuidv4()
 
-  if (exists == null) {
+  if (exists == null || exists === undefined) {
     await globalThis.db
       .insertInto('songs')
       .values({
@@ -45,11 +45,11 @@ async function songCreateYoutube(_data: YoutubeImportData) {
       })
       .execute()
 
-    const song = await globalThis.db
+    const song = (await globalThis.db
       .selectFrom('songs')
       .select('song_id')
       .where('filepath', '=', filepath)
-      .executeTakeFirst()
+      .executeTakeFirst()) as { song_id: number } // song is guranteed to exist as it was just created
 
     songDownloadYoutube(_data.url, filepath)
 
@@ -58,12 +58,12 @@ async function songCreateYoutube(_data: YoutubeImportData) {
 
   let name = _data.name
 
-  if (name === '' && exists) {
-    const { filepath: fpath } = await globalThis.db
+  if ((name === '' || name === undefined) && exists) {
+    const { filepath: fpath } = (await globalThis.db
       .selectFrom('songs')
       .select('filepath')
       .where('song_id', '=', songId)
-      .executeTakeFirst()
+      .executeTakeFirst()) as { filepath: string | null } // song is guranteed to exist
 
     const data = JSON.parse(
       (await fs.readFile(`public/songs/${fpath}.info.json`)).toString()
@@ -80,7 +80,7 @@ async function songCreateYoutube(_data: YoutubeImportData) {
       playlist_id: _data.playlistid,
       song_id: songId,
       ordering: count,
-      song_name: name,
+      song_name: name as string, // name is guranteed to be a string because of above if statement
     })
     .execute()
 }
