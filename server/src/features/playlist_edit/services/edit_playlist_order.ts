@@ -5,11 +5,11 @@ import { playlistGet } from 'features/playlist'
  * Will reorganize the ordering of all playlists own by the user based on the new position of the playlist.
  * @param _playlistId
  * @param _newOrder
- * @returns
  */
 async function editPlaylistOrder(_playlistId: string, _newOrder: number) {
   const playlist = await playlistGet(_playlistId)
 
+  if (playlist === undefined) return
   if (playlist.ordering === _newOrder) return
 
   const lo = Math.min(playlist.ordering, _newOrder)
