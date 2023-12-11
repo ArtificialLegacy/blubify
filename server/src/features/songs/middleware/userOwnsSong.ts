@@ -4,6 +4,12 @@ import { sessionGetUser } from 'features/authentication'
 import GenericResult from 'types/generic_result'
 import songEntryGetUser from '../services/song_entry_get_user'
 
+/**
+ * Middleware to check if the user the song entry they are trying to access
+ * @param _req
+ * @param _res
+ * @param _next
+ */
 async function userOwnsSong(
   _req: Request,
   _res: Response,
@@ -17,7 +23,7 @@ async function userOwnsSong(
   }
 
   const songUser = await songEntryGetUser(Number(_req.params.entryId))
-  if (songUser !== undefined && songUser !== user) {
+  if (songUser === undefined || songUser === null || songUser !== user) {
     _res.status(403)
     _res.send({ status: GenericResult.Failed })
     return

@@ -4,7 +4,9 @@ import GenericResult from 'types/generic_result'
 import deleteSong from '../services/delete_song'
 
 async function deleter(_req: Request, _res: Response) {
-  const success = await deleteSong(Number(_req.params.entryId))
+  const success = await deleteSong(Number(_req.params.entryId)).catch(
+    () => false
+  )
 
   if (!success) {
     _res.status(500)

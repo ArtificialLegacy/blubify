@@ -5,7 +5,7 @@ import validateSongNameEdit from '../validators/validate_song_edit_name'
 import GenericResult from 'types/generic_result'
 
 async function name(_req: Request, _res: Response) {
-  if (!(await validateSongNameEdit(_req.body.name))) {
+  if (!(await validateSongNameEdit(_req.body))) {
     _res.status(400)
     _res.send({ status: GenericResult.InvalidRequest })
     return

@@ -14,7 +14,7 @@ async function songGetStatus(_filepath: string): Promise<boolean> {
     .where('filepath', '=', _filepath)
     .executeTakeFirst()
 
-  return Boolean(song.ready.at(0))
+  return Boolean(song?.ready?.at(0))
 }
 
 export default songGetStatus

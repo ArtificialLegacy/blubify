@@ -20,11 +20,10 @@ import deleter from './routes/deleter'
  */
 const router = Router()
 router.use(authUserCheck)
-router.use(userOwnsSong)
 
-router.patch('/name/:entryId', name)
-router.patch('/order/up/:entryId', orderup)
-router.patch('/order/down/:entryId', orderdown)
-router.delete('/delete/:entryId', deleter)
+router.patch('/name/:entryId', userOwnsSong, name)
+router.patch('/order/up/:entryId', userOwnsSong, orderup)
+router.patch('/order/down/:entryId', userOwnsSong, orderdown)
+router.delete('/delete/:entryId', userOwnsSong, deleter)
 
 export default router
