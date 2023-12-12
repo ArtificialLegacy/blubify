@@ -8,7 +8,7 @@ async function updateUserSettings(
   _userId: number,
   _theme: number
 ): Promise<boolean> {
-  return globalThis.db
+  return await globalThis.db
     .updateTable('users')
     .set({
       theme: _theme,
