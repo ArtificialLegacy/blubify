@@ -5,6 +5,7 @@ import path from 'path'
 import dotenv from 'dotenv'
 import useragent from 'express-useragent'
 import type formidable from 'formidable'
+import helmet from 'helmet'
 
 dotenv.config()
 
@@ -20,9 +21,16 @@ import cookieParse from 'middleware/cookie_parse'
 
 const app = express()
 
+app.use(
+  helmet({
+    crossOriginResourcePolicy: {
+      policy: 'cross-origin',
+    },
+  })
+)
 app.use(cors())
 app.use(bodyParser.json())
-app.use('/api/public/', express.static(path.join(__dirname, '../public')))
+//app.use('/api/public/', express.static(path.join(__dirname, '../public')))
 app.use(cookieParse)
 app.use(useragent.express())
 
