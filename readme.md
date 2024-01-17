@@ -1,5 +1,14 @@
 # Blubify
 
+## Features
+
+* Download and store audio from Youtube.
+* Direct upload of audio.
+* Secure user accounts and authentication.
+* Create and manage playlists.
+* Well featured audio player with seek, exponential volume control, loop controls including shuffle and repeat.
+* Ability to share songs between accounts and playlists.
+
 ## Requirements
 
 * NodeJS/npm
