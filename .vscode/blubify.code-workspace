@@ -9,7 +9,11 @@
 		},
 		{
 			"name": "server",
-			"path": "../server"
+			"path": "../packages/server"
+		}
+		{
+			"name": "types",
+			"path": "../packages/types"
 		}
 	],
 	"settings": {
