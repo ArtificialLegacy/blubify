@@ -15,7 +15,8 @@
       "public/*": ["../public/*"],
       "types/*": ["types/*"],
       "middleware/*": ["middleware/*"]
-    }
+    },
+    "types": ["jest", "node"],
   },
   "ts-node": {
     "esm": true,

@@ -34,6 +34,7 @@
     "@types/express-useragent": "^1.0.5",
     "@types/fluent-ffmpeg": "^2.1.21",
     "@types/formidable": "^3.4.2",
+    "@types/jest": "^29.5.12",
     "@types/uuid": "^9.0.7",
     "kysely-codegen": "^0.10.0"
   }
