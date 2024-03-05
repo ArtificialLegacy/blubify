@@ -5,15 +5,19 @@ import { AddressInfo } from 'net'
 
 import type { SignupStatus } from 'types'
 import validateSignupData from '../validators/validate_signup_data'
-import { hashPassword } from 'features/authentication'
 import accountCreate from '../services/account_create'
-import { createSession, usernameGetUser } from 'features/authentication'
+import {
+  createSession,
+  usernameGetUser,
+  hashPassword,
+} from 'features/authentication'
 
 function signup(
   deps = {
     usernameGetUser,
     accountCreate,
     createSession,
+    hashPassword,
   }
 ) {
   return async (_req: Request, _res: Response) => {
@@ -31,7 +35,7 @@ function signup(
       return
     }
 
-    const hashedPassword = await hashPassword(_req.body.password)
+    const hashedPassword = await deps.hashPassword(_req.body.password)
     const userData: Insertable<Users> = {
       username: _req.body.username,
       pass: hashedPassword,
