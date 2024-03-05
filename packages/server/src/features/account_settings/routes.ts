@@ -14,6 +14,6 @@ const router = Router()
 
 router.use(authUserCheck)
 
-router.put('/edit', editRoute)
+router.put('/edit', editRoute())
 
 export default router

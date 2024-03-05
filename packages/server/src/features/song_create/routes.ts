@@ -22,8 +22,8 @@ const router = Router()
 router.use(authUserCheck)
 router.use(userOwnsPlaylist)
 
-router.post('/youtube', youtube)
-router.post('/upload', formidableParse, upload)
-router.post('/shared', shared)
+router.post('/youtube', youtube())
+router.post('/upload', formidableParse, upload())
+router.post('/shared', shared())
 
 export default router

@@ -9,6 +9,6 @@ import login from './routes/login'
  */
 const router = Router()
 
-router.post('/login', login)
+router.post('/login', login())
 
 export default router

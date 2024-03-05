@@ -33,8 +33,8 @@ router.use(authUserCheck)
 router.use('/create', songCreateRouter)
 router.use('/edit', songEditRouter)
 
-router.get('/list/:playlistId', userOwnsPlaylist, list)
-router.get('/status/:filepath', userAccessSong, status)
-router.get('/name/:entryId', userOwnsSong, name)
+router.get('/list/:playlistId', userOwnsPlaylist, list())
+router.get('/status/:filepath', userAccessSong, status())
+router.get('/name/:entryId', userOwnsSong, name())
 
 export default router

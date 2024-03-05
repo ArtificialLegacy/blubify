@@ -5,15 +5,25 @@ import logoutUser from '../services/logout_user'
 import cullSessions from '../services/cull_sessions'
 import { APIStatus } from 'types'
 
-async function logout(_req: Request, _res: Response) {
-  // authUserCheck middleware ensures that this is a valid user.
-  const user = (await sessionGetUser(_res.locals.cookies?.session)) as number
+function logout(
+  deps = {
+    sessionGetUser,
+    logoutUser,
+    cullSessions,
+  }
+) {
+  return async (_req: Request, _res: Response) => {
+    // authUserCheck middleware ensures that this is a valid user.
+    const user = (await deps.sessionGetUser(
+      _res.locals.cookies?.session
+    )) as number
 
-  logoutUser(_res.locals.cookies?.session)
-  cullSessions(user)
+    deps.logoutUser(_res.locals.cookies?.session)
+    deps.cullSessions(user)
 
-  _res.status(200)
-  _res.send({ status: 'success' } as APIStatus)
+    _res.status(200)
+    _res.send({ status: 'success' } as APIStatus)
+  }
 }
 
 export default logout

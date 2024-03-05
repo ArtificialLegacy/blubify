@@ -23,9 +23,9 @@ const router = Router()
 router.use(authUserCheck)
 router.use(userOwnsPlaylist)
 
-router.patch('/data/:playlistId', data)
-router.delete('/delete/:playlistId', deleter)
-router.patch('/order/up/:playlistId', orderup)
-router.patch('/order/down/:playlistId', orderdown)
+router.patch('/data/:playlistId', data())
+router.delete('/delete/:playlistId', deleter())
+router.patch('/order/up/:playlistId', orderup())
+router.patch('/order/down/:playlistId', orderdown())
 
 export default router

@@ -21,7 +21,7 @@ router.use(authUserCheck)
 
 router.use('/edit', editPlaylistRouter)
 
-router.post('/create', create)
-router.get('/list', list)
+router.post('/create', create())
+router.get('/list', list())
 
 export default router

@@ -22,10 +22,14 @@ import sessionInvalidate from './routes/session_invalidate'
  */
 const router = Router()
 
-router.get('/session', session)
-router.get('/sessionList', authUserCheck, sessionList)
-router.delete('/logout', authUserCheck, logout)
-router.delete('/sessionInvalidate/:sessionId', authUserCheck, sessionInvalidate)
+router.get('/session', session())
+router.get('/sessionList', authUserCheck, sessionList())
+router.delete('/logout', authUserCheck, logout())
+router.delete(
+  '/sessionInvalidate/:sessionId',
+  authUserCheck,
+  sessionInvalidate()
+)
 
 router.use(signupRouter)
 router.use(loginRouter)

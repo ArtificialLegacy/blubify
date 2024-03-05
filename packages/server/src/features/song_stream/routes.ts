@@ -9,6 +9,6 @@ import stream from './routes/stream'
  */
 const router = Router()
 
-router.get('/:filepath', stream)
+router.get('/:filepath', stream())
 
 export default router

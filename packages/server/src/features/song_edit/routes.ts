@@ -21,9 +21,9 @@ import deleter from './routes/deleter'
 const router = Router()
 router.use(authUserCheck)
 
-router.patch('/name/:entryId', userOwnsSong, name)
-router.patch('/order/up/:entryId', userOwnsSong, orderup)
-router.patch('/order/down/:entryId', userOwnsSong, orderdown)
-router.delete('/delete/:entryId', userOwnsSong, deleter)
+router.patch('/name/:entryId', userOwnsSong, name())
+router.patch('/order/up/:entryId', userOwnsSong, orderup())
+router.patch('/order/down/:entryId', userOwnsSong, orderdown())
+router.delete('/delete/:entryId', userOwnsSong, deleter())
 
 export default router
