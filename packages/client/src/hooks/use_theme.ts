@@ -1,7 +1,7 @@
 import useMediaQuery from '@mui/material/useMediaQuery'
 import { PaletteMode } from '@mui/material'
 
-import { useUserState } from 'features/authentication'
+import { useUserState } from 'modules/authentication'
 
 function useTheme(): PaletteMode {
   const userTheme = useUserState((_state) => _state.theme)

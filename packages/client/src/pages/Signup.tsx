@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Box } from '@mui/material'
 
-import { SignupForm } from 'features/signup'
+import { SignupForm } from 'modules/signup'
 
 function SignupPage() {
   return (

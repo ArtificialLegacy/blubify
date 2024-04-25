@@ -8,14 +8,12 @@ import helmet from 'helmet'
 
 dotenv.config()
 
-import { Kysely, MysqlDialect } from 'kysely'
-import { DB as Database } from 'kysely-codegen'
-import mysql from 'mysql2'
+import { conn } from 'db/index'
 
-import { router as authRouter } from 'features/authentication/'
-import { router as playlistRouter } from 'features/playlist'
-import { router as songRouter } from 'features/songs'
-import { router as settingRouter } from 'features/account_settings'
+import { router as authRouter } from 'modules/authentication/'
+import { router as playlistRouter } from 'modules/playlist'
+import { router as songRouter } from 'modules/songs'
+import { router as settingRouter } from 'modules/account_settings'
 import cookieParse from 'middleware/cookie_parse'
 
 const app = express()
@@ -38,8 +36,8 @@ app.use('/api/playlist/', playlistRouter)
 app.use('/api/songs/', songRouter)
 app.use('/api/accountSettings/', settingRouter)
 
-app.get('/api/status', (_req, _res) => {
-  _res.sendStatus(200)
+app.get('/api/status', (_, res) => {
+  res.sendStatus(200)
 })
 
 app.listen(
@@ -52,30 +50,11 @@ app.listen(
   }
 )
 
-const db = new Kysely<Database>({
-  dialect: new MysqlDialect({
-    pool: mysql.createPool({
-      host: process.env.DATABASE_HOST,
-      port: Number(process.env.DATABASE_PORT),
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE,
-      waitForConnections: true,
-      connectionLimit: 10,
-      maxIdle: 10,
-      idleTimeout: 60000,
-      queueLimit: 0,
-      enableKeepAlive: true,
-      keepAliveInitialDelay: 0,
-    }),
-  }),
-})
-
 declare global {
-  var db: Kysely<Database>
+  var db: typeof conn
 }
 
-globalThis.db = db
+globalThis.db = conn
 
 declare global {
   namespace Express {

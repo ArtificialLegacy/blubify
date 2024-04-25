@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Box } from '@mui/material'
 
-import { LoginForm } from 'features/login'
+import { LoginForm } from 'modules/login'
 
 function LoginPage() {
   return (

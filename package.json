@@ -9,7 +9,9 @@
     "workspaces": [
         "packages/server",
         "packages/types",
-        "packages/client"
+        "packages/client",
+        "packages/validators",
+        "packages/db"
     ],
     "private": true,
     "devDependencies": {

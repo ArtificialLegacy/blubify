@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-import { checkSession } from 'features/authentication'
+import { checkSession } from 'modules/authentication'
 
 function DefaultPage() {
   useEffect(() => {

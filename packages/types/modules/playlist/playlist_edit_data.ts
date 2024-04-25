@@ -3,7 +3,8 @@
  * @property name - The new name of the playlist.
  */
 type PlaylistEditData = {
-  name: string
+    name: string
+    id: number
 }
 
 export type { PlaylistEditData }

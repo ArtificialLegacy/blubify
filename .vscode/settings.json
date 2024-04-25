@@ -13,5 +13,6 @@
     "editor.tabSize": 4,
     "jest.runMode": {
         "type": "on-demand"
-    }
+    },
+    "glassit.alpha": 250
 }

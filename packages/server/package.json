@@ -20,7 +20,6 @@
     "fluent-ffmpeg": "^2.1.2",
     "formidable": "^3.5.1",
     "helmet": "^7.1.0",
-    "kysely": "^0.25.0",
     "mysql2": "^3.3.3",
     "tsconfig-paths": "^4.2.0",
     "uuid": "^9.0.0",
@@ -35,7 +34,6 @@
     "@types/fluent-ffmpeg": "^2.1.21",
     "@types/formidable": "^3.4.2",
     "@types/jest": "^29.5.12",
-    "@types/uuid": "^9.0.7",
-    "kysely-codegen": "^0.10.0"
+    "@types/uuid": "^9.0.7"
   }
 }

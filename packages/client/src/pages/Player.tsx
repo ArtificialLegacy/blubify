@@ -6,10 +6,10 @@ import {
   PlaylistList,
   playlistGetList,
   usePlaylistState,
-} from 'features/playlist'
-import { Mainbar } from 'features/mainbar'
-import { PlaylistCreateModal } from 'features/create_playlist'
-import { checkSession, useUserState } from 'features/authentication'
+} from 'modules/playlist'
+import { Mainbar } from 'modules/mainbar'
+import { PlaylistCreateModal } from 'modules/create_playlist'
+import { checkSession, useUserState } from 'modules/authentication'
 import useToggle from 'hooks/use_toggle'
 import useSwitch from 'hooks/use_switch'
 import {
@@ -19,12 +19,11 @@ import {
   songListUpdateStatus,
   songListUpdateName,
   useSongState,
-} from 'features/songs'
-import { ImportSongModal } from 'features/import_song'
-import { PlayerControl, LoopMode } from 'features/player_control'
-import { PlaylistEditModal } from 'features/edit_playlist'
-import { AccountSettingsModal } from 'features/account_settings'
-import { SessionStatus } from 'types'
+} from 'modules/songs'
+import { ImportSongModal } from 'modules/import_song'
+import { PlayerControl, LoopMode } from 'modules/player_control'
+import { PlaylistEditModal } from 'modules/edit_playlist'
+import { AccountSettingsModal } from 'modules/account_settings'
 
 function PlayerPage() {
   const [playlistDrawerOpen, handlePlaylistDrawerOpen] = useToggle(true)
@@ -142,7 +141,7 @@ function PlayerPage() {
       {songs[currentSong]?.filepath ? (
         <audio ref={audioRef} preload='auto' onEnded={songEnd}>
           <source
-            src={`${process.env.REACT_APP_API_URL}/api/songs/stream/${songs[currentSong]?.filepath}`}
+            src={`${process.env.VITE_API_URL}/api/songs/stream/${songs[currentSong]?.filepath}`}
             type='audio/x-m4a'
           />
         </audio>

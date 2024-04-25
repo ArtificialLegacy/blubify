@@ -5,15 +5,21 @@
 		},
 			{
 			"name": "client",
-			"path": "../client"
+			"path": "../packages/client"
 		},
 		{
 			"name": "server",
 			"path": "../packages/server"
-		}
+		},
 		{
 			"name": "types",
 			"path": "../packages/types"
+		}, {
+			"name": "validators",
+			"path": "../packages/validators"
+		}, {
+			"name": "db",
+			"path": "../packages/db"
 		}
 	],
 	"settings": {
