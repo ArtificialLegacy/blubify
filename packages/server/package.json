@@ -4,7 +4,6 @@
   "description": "",
   "main": "./src/server.ts",
   "scripts": {
-    "migrate-db": "npx kysely-codegen --dialect mysql",
     "start": "npx tsx -r tsconfig-paths/register ./src/server.ts",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
