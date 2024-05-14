@@ -1,0 +1,18 @@
+{
+    "explorer.compactFolders": false,
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "editor.tabSize": 4,
+    "jest.runMode": {
+        "type": "on-demand"
+    },
+    "glassit.alpha": 250
+}

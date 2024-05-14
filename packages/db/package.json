@@ -1,0 +1,20 @@
+{
+    "name": "db",
+    "version": "1.0.0",
+    "author": "Joseph Goyer",
+    "license": "MIT",
+    "scripts": {
+        "new": "npx tsx ./src/cmd/new.ts",
+        "migrate": "npx tsx ./src/cmd/migrate.ts",
+        "refresh": "npx tsx ./src/cmd/refresh.ts",
+        "revert": "npx tsx ./src/cmd/revert.ts"
+    },
+    "devDependencies": {
+        "@types/node": "^20.12.2"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "mysql2": "^3.9.3",
+        "tsconfig-paths": "^4.2.0"
+    }
+}

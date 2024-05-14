@@ -1,0 +1,12 @@
+{
+    "name": "validators",
+    "version": "1.0.0",
+    "author": "Joseph Goyer",
+    "license": "MIT",
+    "dependencies": {
+        "yup": "^1.4.0"
+    },
+    "devDependencies": {
+        "@types/formidable": "^3.4.5"
+    }
+}

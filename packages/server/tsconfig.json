@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "rootDirs": ["./src"],
+    "typeRoots": [
+      "./src/env.d.ts",
+      "./src/reset.d.ts",
+      "./node_modules/@types"
+    ],
+    "baseUrl": "./src",
+    "outDir": "./build/",
+    "paths": {
+      "utility/*": ["utility/*"],
+      "modules/*": ["modules/*"],
+      "public/*": ["../public/*"],
+      "types/*": ["types/*"],
+      "middleware/*": ["middleware/*"]
+    },
+  },
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
+  }
+}

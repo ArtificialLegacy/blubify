@@ -1,0 +1,33 @@
+{
+    "name": "blubify",
+    "version": "1.0.0",
+    "author": "Joseph Goyer",
+    "license": "MIT",
+    "scripts": {
+        "format": "prettier --write .",
+        "start-server": "npm start -w packages/server",
+        "start-client": "npm start -w packages/client",
+        "dev": "run-p start-server start-client"
+    },
+    "workspaces": [
+        "packages/server",
+        "packages/types",
+        "packages/client",
+        "packages/validators",
+        "packages/db"
+    ],
+    "private": true,
+    "devDependencies": {
+        "@total-typescript/ts-reset": "^0.4.2",
+        "@types/jest": "^29.5.10",
+        "@types/node": "^20.2.5",
+        "@typescript-eslint/eslint-plugin": "^5.59.9",
+        "@typescript-eslint/parser": "^5.59.9",
+        "eslint": "^8.42.0",
+        "eslint-config-prettier": "^8.8.0",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.8.8",
+        "ts-jest": "^29.1.1",
+        "ts-node": "^10.9.1"
+    }
+}
