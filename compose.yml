@@ -1,0 +1,28 @@
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: ./packages/apps/server/Dockerfile
+    env_file:
+      - .env
+      - ./packages/apps/server/.env
+    ports:
+      - ${API_PORT}:${API_PORT}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    volumes:
+      - blubify:/usr/songs
+  client:
+    build:
+      context: .
+      dockerfile: ./packages/apps/client/Dockerfile
+    env_file:
+      - .env
+    ports:
+      - ${CLIENT_PORT}:${CLIENT_PORT}
+    extra_hosts:
+      - host.docker.internal:host-gateway
+
+volumes:
+  blubify:

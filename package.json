@@ -4,17 +4,16 @@
     "author": "Joseph Goyer",
     "license": "MIT",
     "scripts": {
-        "format": "prettier --write .",
-        "start-server": "npm start -w packages/server",
-        "start-client": "npm start -w packages/client",
-        "dev": "run-p start-server start-client"
+        "start-server": "npm start -w packages/apps/server",
+        "build-client": "npm run build -w packages/apps/client",
+        "migrate-db": "npm run migrate latest -w packages/libs/db"
     },
     "workspaces": [
-        "packages/server",
-        "packages/types",
-        "packages/client",
-        "packages/validators",
-        "packages/db"
+        "packages/apps/client",
+        "packages/apps/server",
+        "packages/libs/types",
+        "packages/libs/validators",
+        "packages/libs/db"
     ],
     "private": true,
     "devDependencies": {

@@ -11,12 +11,9 @@
 
 ## Requirements
 
-* NodeJS/npm
-* serve
-* FFMPEG
-* Python 3.7 or greater installed on system.
-* A mysql/mariadb database. (some scripts may not work properly outside of MariaDB)
-* screen (optional)
+* Node
+* Docker
+* MariaDB
 
 ## Installation
 
@@ -24,18 +21,23 @@
 
 ```sh
 git clone https://github.com/ArtificialLegacy/blubify.git
+cd blubify
 ```
 
-* Install packages.
+### .env Setup
+
+* Edit the .env file in the project root.
 
 ```sh
-cd ./blubify
-npm i
+VITE_API_URL="http://127.0.0.1:5000" # When hosting on the network, set to the host's ip
+CLIENT_PORT="3000"
+API_IP="0.0.0.0"
+API_PORT="5000"
 ```
 
 ### Database Setup
 
-* Install and config a mysql fork such as MariaDB.
+* Install MariaDB.
 * Setup the blubify database.
 
 ```sql
@@ -46,106 +48,48 @@ USE blubify;
 * Open db directory
 
 ```sh
-cd ./packages/db
-```
-
-* Run `npm run migrate latest` in `./packages/db`.
-
-```sql
-SHOW tables;
+cd packages/libs/db
 ```
 
 * Create .env in the server directory with the following:
 
 ```sh
-DATABASE_URL="" # url to hosted database.
-DATABASE="" # name of database.
+DATABASE_URL="mysql://user:password@127.0.0.1:3306/blubify"
+DATABASE="blubify"
 ```
+
+* Run `npm run migrate latest` in `./packages/libs/db`.
 
 ### Server Setup
 
 * Open server directory
 
 ```sh
-cd ./packages/server
+cd ../../apps/server
 ```
 
 * Create .env in the server directory with the following:
 
 ```sh
-# optional if FFMPEG is installed on PATH
-FFMPEG_PATH="" # Path to the exe file.
-FFMPEG_LOCATION="" # Path to bin directory.
-
-API_IP="" # The ip to host the ip on, either 127.0.0.1 for hosting locally or you're ip on you're local network.
-API_PORT="" # The port to host the api on.
+DATABASE_URL="mysql://user:password@host.docker.internal:3306/blubify"
+DATABASE="blubify".
 ```
 
-* Running the server is blocking so it must be run within it's own screen/terminal
+### Build
 
 ```sh
-# OPTIONAL: create a screen
-screen -S BlubifyServer
-
-# run server
-npm start
-```
-
-### Client Setup (run from within the client directory)
-
-* Open client directory.
-
-```sh
-cd ./client
-```
-
-* Create .env in the client directory with the following.
-
-```sh
-VITE_API_URL="" # Should be similar to http://{API_IP}:{API_PORT}
-```
-
-* Build static files for hosting.
-
-```sh
-npm run build
-```
-
-* Running the client is blocking so it must be run within it's own screen/terminal.
-
-```sh
-# OPTIONAL: create a screen
-screen -S BlubifyClient
-
-# run client
-npm run host
+cd ../../..
+docker compose up --build --detach
 ```
 
 ## Updating
 
-* Retrieve new source code
-
 ```sh
 git pull
-```
-
-* Install packages.
-
-```sh
 npm i
-
-```
-
-### Update Database
-
-* Run `npm run migrate latest` in `./packages/db`.
-
-### Update Client
-
-* Build static files for hosting.
-
-```sh
-npm run build
+npm run migrate-db
+docker compose up --build --detach
+docker image prune
 ```
 
 ## Common Issues
