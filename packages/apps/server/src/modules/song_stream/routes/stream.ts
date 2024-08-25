@@ -6,7 +6,7 @@ function stream() {
     if (_req.params.filepath.length < 0 || _req.params.filepath.length > 36)
       _res.sendStatus(400)
 
-    const path = `/usr/songs/${_req.params.filepath}.mp3`
+    const path = `${process.env.SONG_STORE}${_req.params.filepath}.mp3`
 
     const stream = fs.createReadStream(path)
     const stat = fs.statSync(path)

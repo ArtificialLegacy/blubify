@@ -82,7 +82,9 @@ async function songCreateYoutube(data: YoutubeImportData) {
       .then(db_col<number>('filepath'))
 
     const data = JSON.parse(
-      (await fs.readFile(`/usr/songs/${fpath}.info.json`)).toString()
+      (
+        await fs.readFile(`${process.env.SONG_STORE}${fpath}.info.json`)
+      ).toString()
     ) as { title: string }
 
     name = data.title

@@ -6,11 +6,11 @@
     "scripts": {
         "start-server": "npm start -w packages/apps/server",
         "start-client": "npm start -w packages/apps/client",
+        "dev-server": "dotenv -e .env.development -e packages/apps/server/.env.development npm run start-server",
+        "dev-client": "dotenv -e .env.development npm run start-client",
+        "dev": "npm-run-all --parallel dev-server dev-client",
         "build-client": "npm run build -w packages/apps/client",
-        "migrate-db": "npm run migrate latest -w packages/libs/db",
-        "dev-server": "dotenv -e .dev.env -e packages/apps/server/.dev.env npm run start-server",
-        "dev-client": "dotenv -e .dev.env npm run start-client",
-        "dev": "npm-run-all --parallel dev-server dev-client"
+        "migrate-db": "npm run migrate latest -w packages/libs/db"
     },
     "workspaces": [
         "packages/apps/client",

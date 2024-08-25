@@ -17,7 +17,7 @@ async function songDownloadYoutube(url: string, filepath: string) {
     addHeader: ['referer:youtube.com', 'user-agent:googlebot'],
     extractAudio: true,
     audioQuality: 0,
-    output: `/usr/songs/${filepath}.mp3`,
+    output: `${process.env.SONG_STORE}${filepath}.mp3`,
     audioFormat: 'mp3',
     writeInfoJson: true,
     printJson: true,

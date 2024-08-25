@@ -33,6 +33,7 @@ VITE_API_URL="http://127.0.0.1:5000" # When hosting on the network, set to the h
 CLIENT_PORT="3000"
 API_IP="0.0.0.0"
 API_PORT="5000"
+SONG_STORE="/usr/songs/"
 ```
 
 ### Database Setup

@@ -38,7 +38,7 @@ app.get('/api/status', (_, res) => {
   res.sendStatus(200)
 })
 
-fs.mkdir('/usr/songs', {
+fs.mkdir(process.env.SONG_STORE as string, {
   recursive: true,
 })
 
