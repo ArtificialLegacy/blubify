@@ -18,6 +18,7 @@ import { ManageAccounts } from '@mui/icons-material'
 import AccountSettingsInfoPanel from './AccountSettingsInfoPanel'
 import AccountSettingsGeneralPanel from './AccountSettingsGeneralPanel'
 import AccountSettingsSessionsPanel from './AccountSettingsSessionsPanel'
+import useTheme from 'hooks/use_theme'
 
 interface accountSettingsModalProps {
   readonly accountSettingsModalOpen: boolean
@@ -38,6 +39,8 @@ function AccountSettingsModal(_props: accountSettingsModalProps) {
     setTab(_value)
   }
 
+  const theme = useTheme()
+
   useEffect(() => {
     setTab(0)
   }, [_props])
@@ -53,7 +56,12 @@ function AccountSettingsModal(_props: accountSettingsModalProps) {
           minHeight: '100vh',
         }}
       >
-        <Paper sx={{ position: 'relative' }}>
+        <Paper
+          className={
+            (theme === 'light' && 'paper-light') + ' paper paper-modal'
+          }
+          sx={{ position: 'relative' }}
+        >
           {process.env.NODE_ENV === 'development' && (
             <Typography
               variant='body2'

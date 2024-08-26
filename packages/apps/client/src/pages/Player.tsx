@@ -158,11 +158,10 @@ function PlayerPage() {
       <Drawer
         variant='persistent'
         open={playlistDrawerOpen}
+        className='playlist-drawer'
         sx={{
           '& .MuiDrawer-paper': {
-            width: '340px',
-            height: 'calc(100% - 65px)',
-            marginTop: '65px',
+            borderRight: 'none',
           },
         }}
       >

@@ -19,6 +19,7 @@ import { Share, ContentCopy } from '@mui/icons-material'
 
 import type { ModalOpen } from 'modules/edit_song'
 import { useSongState } from 'modules/songs'
+import useTheme from 'hooks/use_theme'
 
 interface songShareModalProps {
   readonly modalOpen: boolean
@@ -49,6 +50,8 @@ function ShareSongModal(_props: songShareModalProps) {
     setSnackbarOpen(false)
   }, [])
 
+  const theme = useTheme()
+
   return (
     <Modal open={_props.modalOpen}>
       <Box
@@ -60,7 +63,11 @@ function ShareSongModal(_props: songShareModalProps) {
           minHeight: '100vh',
         }}
       >
-        <Paper>
+        <Paper
+          className={
+            (theme === 'light' && 'paper-light') + ' paper paper-modal'
+          }
+        >
           <List
             sx={{
               width: '500px',

@@ -22,6 +22,7 @@ import { songEditValidationSchema } from 'validators'
 import type { EditSongData } from 'types'
 import editNameSongSubmit from '../services/submit_edit_song_name'
 import type { APIResult } from 'types'
+import useTheme from 'hooks/use_theme'
 
 interface songEditNameProps {
   readonly modalOpen: boolean
@@ -72,6 +73,8 @@ function SongEditName(_props: songEditNameProps) {
     validationSchema: songEditValidationSchema,
   })
 
+  const theme = useTheme()
+
   return (
     <Modal open={_props.modalOpen}>
       <Box
@@ -83,7 +86,11 @@ function SongEditName(_props: songEditNameProps) {
           minHeight: '100vh',
         }}
       >
-        <Paper>
+        <Paper
+          className={
+            (theme === 'light' && 'paper-light') + ' paper paper-modal'
+          }
+        >
           <form onSubmit={formik.handleSubmit}>
             <List
               sx={{

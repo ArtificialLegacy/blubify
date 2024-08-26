@@ -1,25 +1,25 @@
 .song-list {
-  width: calc(100% - 340px);
-
-  margin-left: 340px;
+  width: calc(100vw - 400px);
+  margin-left: 380px;
 
   transition: width 225ms cubic-bezier(0, 0, 0.2, 1) 0ms,
     margin-left 225ms cubic-bezier(0, 0, 0.2, 1) 0ms !important;
 }
 
 .song-list-closed {
-  width: 100%;
+  width: calc(100vw - 40px);
+  margin-left: 20px;
 
   transition: width 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms,
     margin-left 195ms cubic-bezier(0.4, 0, 0.6, 1) 0ms !important;
 }
 
 .song-list-short {
-  height: calc(100vh - 220px);
+  height: calc(100vh - 290px);
 }
 
 .song-list-tall {
-  height: calc(100vh - 121px);
+  height: calc(100vh - 170px);
 }
 
 .song-list-short,

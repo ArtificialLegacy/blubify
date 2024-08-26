@@ -1,0 +1,19 @@
+
+body {
+    background-color: black !important;
+}
+
+.paper {
+    background-color: rgba($color: #78909c, $alpha: 0.1) !important;
+    background-image: none !important;
+    border-radius: 10px !important;
+    backdrop-filter: blur(5px);
+}
+
+.paper-light {
+    background-color: rgba($color: #ffffff, $alpha: 0.5) !important;
+}
+
+.paper-modal {
+    backdrop-filter: blur(10px);
+}

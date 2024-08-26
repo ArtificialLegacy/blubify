@@ -24,6 +24,7 @@ import type { PlaylistCreateData } from 'types'
 import { playlistCreateDataValidationSchema } from 'validators'
 import { playlistGetList, usePlaylistState } from 'modules/playlist'
 import type { APIResult } from 'types'
+import useTheme from 'hooks/use_theme'
 
 type playlistCreateModalProps = {
   readonly open: boolean
@@ -41,6 +42,8 @@ function PlaylistCreateModal(_props: playlistCreateModalProps) {
   const [status, setStatus] = useState<APIResult>()
 
   const setPlaylists = usePlaylistState((_state) => _state.setPlaylists)
+
+  const theme = useTheme()
 
   const formik = useFormik({
     initialValues: {
@@ -75,7 +78,11 @@ function PlaylistCreateModal(_props: playlistCreateModalProps) {
           minHeight: '100vh',
         }}
       >
-        <Paper>
+        <Paper
+          className={
+            (theme === 'light' && 'paper-light') + ' paper paper-modal'
+          }
+        >
           <form onSubmit={formik.handleSubmit}>
             <List
               sx={{

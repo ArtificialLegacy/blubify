@@ -17,6 +17,7 @@ import { Info } from '@mui/icons-material'
 
 import { useSongState } from 'modules/songs'
 import type { ModalOpen } from '../types/modal_open'
+import useTheme from 'hooks/use_theme'
 
 interface songInfoProps {
   readonly modalOpen: boolean
@@ -49,6 +50,8 @@ function SongInfo(_props: songInfoProps) {
     return date.toLocaleTimeString()
   }, [_props])
 
+  const theme = useTheme()
+
   return (
     <Modal open={_props.modalOpen}>
       <Box
@@ -60,7 +63,11 @@ function SongInfo(_props: songInfoProps) {
           minHeight: '100vh',
         }}
       >
-        <Paper>
+        <Paper
+          className={
+            (theme === 'light' && 'paper-light') + ' paper paper-modal'
+          }
+        >
           <List
             sx={{
               width: '500px',

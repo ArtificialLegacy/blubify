@@ -5,3 +5,27 @@
   padding: 10px;
   padding-top: 60px;
 }
+
+.playlist-drawer {
+  background-color: #0000 !important;
+  background-image: none !important;
+  
+  border-radius: 10px;
+}
+
+.playlist-drawer .MuiDrawer-paper {
+  width: 340px;
+  height: calc(100% - 105px);
+  margin-top: 85px;
+  margin-left: 20px;
+
+  background-color: #0000 !important;
+  background-image: none !important;
+  
+  border-radius: 10px;
+}
+
+.playlist-header {
+  background-color: #0000 !important;
+  background-image: none !important;
+}

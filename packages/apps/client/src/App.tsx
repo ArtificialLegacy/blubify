@@ -14,6 +14,7 @@ import UnknownPage from 'pages/Unknown'
 import useTheme from 'hooks/use_theme'
 
 import './styles/scrollbar.scss'
+import './styles/styles.scss'
 
 function App() {
   useEffect(() => {
@@ -36,6 +37,10 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <img
+        src={themeString === 'dark' ? 'dark.jpg' : 'light.jpg'}
+        style={{ position: 'absolute', width: '100vw', height: '100vh' }}
+      />
       <BrowserRouter>
         <Routes>
           <Route index element={<DefaultPage />} />

@@ -25,6 +25,7 @@ import {
 } from 'modules/authentication'
 import cookieRead from 'utility/cookie_read'
 import submitInvalidateSession from '../services/submit_invalidate_session'
+import useTheme from 'hooks/use_theme'
 
 type accountSettingsSessionsPanelProps = {
   readonly tab: number
@@ -62,6 +63,8 @@ function AccountSettingsSessionsPanel(
   const handleCloseClick = useCallback(() => {
     _props.setAccountSettingsModalOpen(false)
   }, [_props])
+
+  const theme = useTheme()
 
   const handleLogoutClick = useCallback(async () => {
     await logout()
@@ -106,7 +109,13 @@ function AccountSettingsSessionsPanel(
                   <Container sx={{ width: '100%' }}>
                     {_index === 1 && <Divider sx={{ marginBottom: '10px' }} />}
                     <Card
-                      sx={{ width: '100%', marginBottom: '10px' }}
+                      sx={{
+                        width: '100%',
+                        marginBottom: '10px',
+                        borderRadius: '10px',
+                        backgroundColor:
+                          theme === 'light' ? '#ffffff80' : '#00000080',
+                      }}
                       variant='outlined'
                     >
                       <CardContent>

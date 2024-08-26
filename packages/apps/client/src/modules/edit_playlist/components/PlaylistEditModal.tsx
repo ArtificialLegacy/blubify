@@ -30,6 +30,7 @@ import type { PlaylistEditData } from 'types'
 import submitPlaylistEdit from '../services/submit_playlist_edit'
 import { APIResult } from 'types'
 import submitPlaylistDelete from '../services/submit_playlist_delete'
+import useTheme from 'hooks/use_theme'
 
 interface playlistEditModalProps {
   readonly playlistEditModalOpen: boolean
@@ -133,6 +134,8 @@ function PlaylistEditModal(_props: playlistEditModalProps) {
     formik.resetForm()
   }, [_props, formik])
 
+  const theme = useTheme()
+
   return (
     <Modal open={_props.playlistEditModalOpen}>
       <form onSubmit={formik.handleSubmit} id='edit-playlist-form'>
@@ -145,7 +148,11 @@ function PlaylistEditModal(_props: playlistEditModalProps) {
             minHeight: '100vh',
           }}
         >
-          <Paper>
+          <Paper
+            className={
+              (theme === 'light' && 'paper-light') + ' paper paper-modal'
+            }
+          >
             <List
               sx={{
                 width: '500px',

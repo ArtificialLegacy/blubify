@@ -17,6 +17,7 @@ import { Info } from '@mui/icons-material'
 
 import type { ModalOpen } from '../types/modal_open'
 import { usePlaylistState } from 'modules/playlist'
+import useTheme from 'hooks/use_theme'
 
 interface playlistInfoProps {
   readonly modalOpen: boolean
@@ -55,6 +56,8 @@ function PlaylistInfo(_props: playlistInfoProps) {
     return date.toLocaleTimeString()
   }, [_props.playlistIndex, playlists])
 
+  const theme = useTheme()
+
   return (
     <Modal open={_props.modalOpen}>
       <Box
@@ -66,7 +69,11 @@ function PlaylistInfo(_props: playlistInfoProps) {
           minHeight: '100vh',
         }}
       >
-        <Paper>
+        <Paper
+          className={
+            (theme === 'light' && 'paper-light') + ' paper paper-modal'
+          }
+        >
           <List sx={{ width: '500px' }}>
             <ListItem sx={{ display: 'flex', justifyContent: 'center' }}>
               <Stack direction='row' alignItems='center' gap={1}>

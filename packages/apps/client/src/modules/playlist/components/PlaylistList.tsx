@@ -19,6 +19,7 @@ import '../styles/playlist_list.scss'
 import { songsGetList, useSongState } from 'modules/songs'
 import usePlaylistState from '../hooks/playlist_state'
 import { PlaylistEditMenu } from 'modules/edit_playlist'
+import useTheme from 'hooks/use_theme'
 
 type playlistListProps = {
   readonly openCreatePlaylistModal: () => void
@@ -28,6 +29,8 @@ function PlaylistList(_props: playlistListProps) {
   const [menuOpen, setMenu] = useState(false)
   const [anchor, setAnchor] = useState<HTMLElement | null>(null)
   const [playlistIndex, setPlaylistIndex] = useState<number>(-1)
+
+  const theme = useTheme()
 
   const [setSongs, setCurrentSong] = useSongState((_state) => [
     _state.setSongs,
@@ -52,10 +55,17 @@ function PlaylistList(_props: playlistListProps) {
   }
 
   return (
-    <Box className='playlist-list' style={{ overflow: 'hidden', padding: 0 }}>
-      <Paper sx={{ width: '340px', margin: 0, padding: '10px' }} square>
+    <Box
+      className={`playlist-list paper ${theme === 'light' && 'paper-light'}`}
+      style={{ overflow: 'hidden', padding: 0 }}
+    >
+      <Paper
+        className='playlist-header'
+        sx={{ width: '340px', margin: 0, padding: '10px' }}
+        square
+      >
         <Button
-          variant='outlined'
+          variant={theme === 'light' ? 'contained' : 'outlined'}
           color='secondary'
           sx={{ width: '100%' }}
           onClick={_props.openCreatePlaylistModal}

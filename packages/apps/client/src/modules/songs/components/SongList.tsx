@@ -59,7 +59,16 @@ function SongList(_props: songListProps) {
         {songs.map((_song, _index) => (
           <ListItem
             key={_index}
-            sx={{ padding: 0 }}
+            sx={{
+              padding: 0,
+              backdropFilter: 'blur(5px)',
+              backgroundColor:
+                theme === 'light'
+                  ? 'rgba(255, 255, 255, 0.5)'
+                  : 'rgba(120, 144, 156, 0.1)',
+              borderRadius: '10px',
+              marginBottom: '5px',
+            }}
             secondaryAction={
               <Tooltip title='Edit Song' placement='left'>
                 <IconButton onClick={(_e) => handleClick(_e, _index)}>
@@ -73,6 +82,7 @@ function SongList(_props: songListProps) {
                 setCurrentSong(_index)
               }}
               selected={currentSong === _index}
+              sx={{ borderRadius: '10px' }}
             >
               <ListItemIcon>
                 {_song.failed ? (

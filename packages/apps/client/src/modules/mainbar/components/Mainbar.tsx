@@ -3,6 +3,9 @@ import React, { useCallback } from 'react'
 import { AppBar, Toolbar, Typography, IconButton, Tooltip } from '@mui/material'
 import { LibraryMusic, ManageAccounts } from '@mui/icons-material'
 
+import '../styles/mainbar.scss'
+import useTheme from 'hooks/use_theme'
+
 interface mainbarProps {
   readonly drawerOpen: boolean
   readonly handleDrawerState: () => void
@@ -18,44 +21,52 @@ function Mainbar(_props: mainbarProps) {
     _props.handleDrawerState()
   }, [_props])
 
+  const theme = useTheme()
+
   const handleAccountSettingsClick = useCallback(() => {
     _props.setAccountSettingsModalOpen(true)
   }, [_props])
 
   return (
-    <div>
-      <AppBar
-        position='fixed'
-        className={_props.drawerOpen ? 'main-bar-open' : 'main-bar'}
-        sx={{ boxShadow: '0 0 0 black' }}
-      >
-        <Toolbar>
-          <Tooltip
-            title={
-              _props.drawerOpen
-                ? 'Close playlist drawer.'
-                : 'Open playlist drawer.'
-            }
-            placement='right'
+    <AppBar
+      position='fixed'
+      className={`appbar ${theme === 'light' && 'paper-light'}`}
+    >
+      <Toolbar className='appbar-toolbar'>
+        <Tooltip
+          title={
+            _props.drawerOpen
+              ? 'Close playlist drawer.'
+              : 'Open playlist drawer.'
+          }
+          placement='right'
+        >
+          <IconButton
+            style={{ marginRight: '15px', padding: '5px' }}
+            onClick={handleDrawerClick}
           >
-            <IconButton
-              style={{ marginRight: '15px' }}
-              onClick={handleDrawerClick}
-            >
-              <LibraryMusic fontSize='large' />
-            </IconButton>
-          </Tooltip>
-          <Typography sx={{ flexGrow: 1 }} variant='h5'>
-            Blubify
-          </Typography>
-          <Tooltip title='Account Settings' placement='left'>
-            <IconButton onClick={handleAccountSettingsClick}>
-              <ManageAccounts fontSize='large' />
-            </IconButton>
-          </Tooltip>
-        </Toolbar>
-      </AppBar>
-    </div>
+            <LibraryMusic fontSize='large' />
+          </IconButton>
+        </Tooltip>
+        <Typography
+          sx={{
+            flexGrow: 1,
+            color: theme === 'light' ? 'black' : 'white',
+          }}
+          variant='h5'
+        >
+          Blubify
+        </Typography>
+        <Tooltip title='Account Settings' placement='left'>
+          <IconButton
+            onClick={handleAccountSettingsClick}
+            style={{ padding: '5px' }}
+          >
+            <ManageAccounts fontSize='large' />
+          </IconButton>
+        </Tooltip>
+      </Toolbar>
+    </AppBar>
   )
 }
 

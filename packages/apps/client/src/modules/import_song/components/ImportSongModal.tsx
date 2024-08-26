@@ -18,6 +18,7 @@ import { Add, Download } from '@mui/icons-material'
 import YoutubePanel from './YoutubePanel'
 import UploadPanel from './UploadPanel'
 import SharedKeyPanel from './SharedKeyPanel'
+import useTheme from 'hooks/use_theme'
 
 type importSongModalProps = {
   importSongModalOpen: boolean
@@ -45,6 +46,8 @@ function ImportSongModal(_props: importSongModalProps) {
     setTab(_value)
   }
 
+  const theme = useTheme()
+
   return (
     <Modal open={_props.importSongModalOpen}>
       <Box
@@ -56,7 +59,11 @@ function ImportSongModal(_props: importSongModalProps) {
           minHeight: '100vh',
         }}
       >
-        <Paper>
+        <Paper
+          className={
+            (theme === 'light' && 'paper-light') + ' paper paper-modal'
+          }
+        >
           <List
             sx={{
               width: '500px',

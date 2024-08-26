@@ -30,6 +30,7 @@ import formatTime from '../utility/format_time'
 import type { LoopMode } from '../types/loop_mode'
 import { useSongState } from 'modules/songs'
 import volumeCurve from '../utility/volume_curve'
+import useTheme from 'hooks/use_theme'
 
 type playerControlProps = {
   readonly playlistDrawerOpen: boolean
@@ -57,6 +58,8 @@ function PlayerControl(_props: playerControlProps) {
     _state.currentSong,
     _state.setCurrentSong,
   ])
+
+  const theme = useTheme()
 
   useEffect(() => {
     setCurrentTime(0)
@@ -152,7 +155,7 @@ function PlayerControl(_props: playerControlProps) {
 
   const getVolumeColor = (_volume: number) => {
     if (_volume <= 0) return 'error.light'
-    return 'primary.light'
+    return 'secondary.light'
   }
 
   return (
@@ -161,16 +164,12 @@ function PlayerControl(_props: playerControlProps) {
       open={currentSong >= 0}
       anchor='bottom'
       className={
-        _props.playlistDrawerOpen
+        (_props.playlistDrawerOpen
           ? 'player-control-drawer-small'
-          : 'player-control-drawer'
+          : 'player-control-drawer') +
+        ' ' +
+        (theme === 'light' ? 'player-light' : 'player-dark')
       }
-      sx={{
-        '& .MuiDrawer-paper': {
-          height: '100px',
-          overflow: 'visible',
-        },
-      }}
     >
       <Stack>
         <Box sx={{ height: '40px' }}>
@@ -181,6 +180,7 @@ function PlayerControl(_props: playerControlProps) {
               marginRight: '30px',
               marginTop: '10px',
             }}
+            color='secondary'
             size='small'
             step={0.001}
             valueLabelDisplay='auto'

@@ -18,6 +18,7 @@ import type { ModalOpen } from '../types/modal_open'
 import { useSongState } from 'modules/songs'
 import submitDeleteSong from '../services/submit_delete_song'
 import type { APIResult } from 'types'
+import useTheme from 'hooks/use_theme'
 
 interface songConfirmDeleteProps {
   readonly modalOpen: boolean
@@ -59,6 +60,8 @@ function SongConfirmDelete(_props: songConfirmDeleteProps) {
     }
   }, [songs, _props, currentSong, setCurrentSong, deleteSong])
 
+  const theme = useTheme()
+
   return (
     <Modal open={_props.modalOpen}>
       <Box
@@ -70,7 +73,11 @@ function SongConfirmDelete(_props: songConfirmDeleteProps) {
           minHeight: '100vh',
         }}
       >
-        <Paper>
+        <Paper
+          className={
+            (theme === 'light' && 'paper-light') + ' paper paper-modal'
+          }
+        >
           <List
             sx={{
               width: '400px',

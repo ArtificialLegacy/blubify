@@ -1,0 +1,20 @@
+
+.appbar {
+    background-color: rgba($color: #78909c, $alpha: 0.1) !important;
+    background-image: none !important;
+
+    width: calc(100% - 40px) !important;
+
+    margin: 20px 20px 0 20px;
+
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+}
+
+.appbar-toolbar {
+    background-color: rgba($color: #000000, $alpha: 0.0) !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    height: 48px !important;
+    min-height: 48px !important;
+}
