@@ -4,7 +4,7 @@
  */
 type PlaylistEditData = {
     name: string
-    id: number
+    id: string
 }
 
 export type { PlaylistEditData }

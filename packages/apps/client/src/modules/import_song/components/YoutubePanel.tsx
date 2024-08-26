@@ -33,10 +33,13 @@ function YoutubePanel(_props: youtubePanelProps) {
 
   const setSongs = useSongState((_state) => _state.setSongs)
 
-  const [playlists, currentPlaylist] = usePlaylistState((_state) => [
-    _state.playlists,
-    _state.currentPlaylist,
-  ])
+  const [playlists, currentPlaylist, setPlaylistCount] = usePlaylistState(
+    (_state) => [
+      _state.playlists,
+      _state.currentPlaylist,
+      _state.setPlaylistCount,
+    ]
+  )
 
   const formik = useFormik({
     initialValues: {
@@ -60,6 +63,10 @@ function YoutubePanel(_props: youtubePanelProps) {
         _props.closeCreateSongModal()
         const songList = await songsGetList(playlists[currentPlaylist].id)
         setSongs(songList)
+        setPlaylistCount(
+          currentPlaylist,
+          (playlists[currentPlaylist].songCount ?? 0) + 1
+        )
       }
     },
     validationSchema: youtubeImportValidationSchema,

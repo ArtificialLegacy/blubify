@@ -107,6 +107,7 @@ function PlaylistEditModal(_props: playlistEditModalProps) {
     onSubmit: async (_values) => {
       const { name } = _values
       const data: PlaylistEditData = {
+        id: playlists[currentPlaylist].id,
         name,
       }
 

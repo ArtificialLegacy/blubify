@@ -26,10 +26,13 @@ function UploadPanel(_props: uploadPanelProps) {
 
   const fileInput = useRef<HTMLInputElement>(null)
 
-  const [playlists, currentPlaylist] = usePlaylistState((_state) => [
-    _state.playlists,
-    _state.currentPlaylist,
-  ])
+  const [playlists, currentPlaylist, setPlaylistCount] = usePlaylistState(
+    (_state) => [
+      _state.playlists,
+      _state.currentPlaylist,
+      _state.setPlaylistCount,
+    ]
+  )
 
   const formik = useFormik({
     initialValues: {
@@ -58,6 +61,10 @@ function UploadPanel(_props: uploadPanelProps) {
         _props.closeCreateSongModal()
         const songList = await songsGetList(playlists[currentPlaylist].id)
         setSongs(songList)
+        setPlaylistCount(
+          currentPlaylist,
+          (playlists[currentPlaylist].songCount ?? 0) + 1
+        )
       }
     },
     validationSchema: uploadImportValidationSchema,

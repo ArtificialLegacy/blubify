@@ -6,6 +6,7 @@ type PlaylistState = {
   currentPlaylist: number
 
   setPlaylists: (_playlists: Playlist[]) => void
+  setPlaylistCount: (_index: number, _count: number) => void
   setCurrentPlaylist: (_index: number) => void
 
   swapPlaylists: (_playlist1: number, _playlist2: number) => void
@@ -19,6 +20,13 @@ const usePlaylistState = create<PlaylistState>((_set) => ({
 
   setPlaylists: (_playlists: Playlist[]) =>
     _set(() => ({ playlists: _playlists })),
+
+  setPlaylistCount: (_index: number, _count: number) =>
+    _set((_state) => {
+      const playlists = _state.playlists
+      playlists[_index].songCount = _count
+      return { playlists }
+    }),
 
   setCurrentPlaylist: (_index: number) =>
     _set(() => ({ currentPlaylist: _index })),
