@@ -51,7 +51,7 @@ function UploadPanel(_props: uploadPanelProps) {
       const formData = new FormData()
       formData.append('file', fileInput.current.files[0])
       formData.append('name', name)
-      formData.append('playlist', playlists[currentPlaylist].id)
+      formData.append('playlistid', playlists[currentPlaylist].id)
 
       formik.resetForm()
 

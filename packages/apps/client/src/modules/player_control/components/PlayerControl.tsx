@@ -39,6 +39,7 @@ type playerControlProps = {
   readonly audioRef: React.RefObject<HTMLAudioElement>
   readonly loopMode: LoopMode
   readonly setLoopMode: (_value: LoopMode) => void
+  readonly songPath: string
 }
 
 /**
@@ -170,6 +171,28 @@ function PlayerControl(_props: playerControlProps) {
         ' ' +
         (theme === 'light' ? 'player-light' : 'player-dark')
       }
+      sx={{
+        '& .MuiPaper-root::before': {
+          content: '""',
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: -1,
+
+          width: '100%',
+          height: '100%',
+
+          borderRadius: '10px',
+          opacity: 0.1,
+
+          display: 'block',
+
+          backgroundImage: `url(${process.env.VITE_API_URL}/api/songs/stream/thumbnail/${_props.songPath})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        },
+      }}
     >
       <Stack>
         <Box sx={{ height: '40px' }}>

@@ -25,7 +25,6 @@ app.use(
 )
 app.use(cors())
 app.use(bodyParser.json())
-//app.use('/api/public/', express.static(path.join(__dirname, '../public')))
 app.use(cookieParse)
 app.use(useragent.express())
 

@@ -88,7 +88,11 @@ function SongList(_props: songListProps) {
                 {_song.failed ? (
                   <Report color='error' />
                 ) : _song.ready ? (
-                  <MusicNote />
+                  <img
+                    src={`${process.env.VITE_API_URL}/api/songs/stream/thumbnail/${_song.filepath}`}
+                    height='24px'
+                    style={{ maxWidth: '48px', borderRadius: '5px' }}
+                  />
                 ) : (
                   <Downloading color='warning' />
                 )}

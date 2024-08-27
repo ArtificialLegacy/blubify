@@ -16,7 +16,7 @@ async function songCreateUpload(
   const count = await globalThis.db
     .query<RowDataPacket[]>(
       /*sql*/ `
-      select count(song_id) as count
+      select count(entry_id) as count
         from SongEntries
         where playlist_id = ?
         group by playlist_id;

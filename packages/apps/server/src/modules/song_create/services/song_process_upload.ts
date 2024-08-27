@@ -31,7 +31,7 @@ async function songProcessUpload(tempFilepath: string, filepath: string) {
         [trueBit, filepath]
       )
     })
-    .save(`${process.env.SONG_STORE}${filepath}.mp3`)
+    .save(`${process.env.SONG_STORE}${filepath}.webm`)
 }
 
 export default songProcessUpload

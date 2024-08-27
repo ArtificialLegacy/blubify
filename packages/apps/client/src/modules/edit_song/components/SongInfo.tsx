@@ -80,6 +80,22 @@ function SongInfo(_props: songInfoProps) {
               </Stack>
             </ListItem>
 
+            <ListItem
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                marginBottom: '10px',
+              }}
+            >
+              <img
+                src={`${process.env.VITE_API_URL}/api/songs/stream/thumbnail/${
+                  songs[_props.songIndex]?.filepath
+                }`}
+                width='300px'
+                style={{ borderRadius: '10px', boxShadow: '5px 5px 5px #0007' }}
+              />
+            </ListItem>
+
             <Divider variant='middle' />
 
             <ListItem sx={{ display: 'flex', justifyContent: 'center' }}>

@@ -142,7 +142,7 @@ function PlayerPage() {
         <audio ref={audioRef} preload='auto' onEnded={songEnd}>
           <source
             src={`${process.env.VITE_API_URL}/api/songs/stream/${songs[currentSong]?.filepath}`}
-            type='audio/x-m4a'
+            type='audio/webm'
           />
         </audio>
       ) : (
@@ -188,6 +188,7 @@ function PlayerPage() {
         audioRef={audioRef}
         loopMode={loopMode}
         setLoopMode={setLoopMode}
+        songPath={songs[currentSong]?.filepath}
       />
 
       <ImportSongModal

@@ -15,12 +15,16 @@ async function songDownloadYoutube(url: string, filepath: string) {
     noCheckCertificates: true,
     noWarnings: true,
     addHeader: ['referer:youtube.com', 'user-agent:googlebot'],
-    extractAudio: true,
-    audioQuality: 0,
-    output: `${process.env.SONG_STORE}${filepath}.mp3`,
-    audioFormat: 'mp3',
+    writeThumbnail: true,
+    writeSub: true,
+    output: `${process.env.SONG_STORE}${filepath}.%(ext)s`,
+    mergeOutputFormat: 'mp4',
+    format: 'bv[height<=1080]+ba,ba[ext=webm]',
+    preferFreeFormats: true,
     writeInfoJson: true,
     printJson: true,
+    preferFfmpeg: true,
+    noPlaylist: true,
   })
     .then(async (data) => {
       const ready = Buffer.alloc(1, 1)
@@ -34,7 +38,7 @@ async function songDownloadYoutube(url: string, filepath: string) {
         [ready, filepath]
       )
 
-      let name = data.title
+      let name = data?.title
       if (name !== undefined) {
         name = name.replaceAll(/[^ -~]/g, '') // remove any non-ascii characters
         name = name.substring(0, Math.min(64, name.length))
