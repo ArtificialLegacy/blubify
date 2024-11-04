@@ -1,5 +1,7 @@
 # Blubify
 
+![screenshot](assets/blubify.png)
+
 ## Features
 
 * Download and store audio from Youtube.
